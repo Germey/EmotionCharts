@@ -35,15 +35,38 @@
     </div>
 </nav>
 <div class="container">
-    <video class="video-js" preload="auto" poster="img/poster.jpg" data-setup="{}">
-        <source src="video/ByBorre.mp4" type="video/mp4">
-    </video>
+    <div id="video">
+        <video class="video-js" preload="auto" poster="img/poster.jpg" data-setup="{}">
+            <source src="video/ByBorre.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div id="options">
+
+    </div>
+    <div id="chart1">
+        <div id="chart1-content"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div id="text">
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div id="chart2">
+                <div id="chart2-content"></div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/video.js"></script>
 <script src="js/flat-ui.min.js"></script>
 <script src="js/application.js"></script>
+<script src="js/highcharts.js"></script>
+<script src="js/exporting.js"></script>
 <script src="js/main.js"></script>
 <script>
     videojs.options.flash.swf = "js/video-js.swf"
