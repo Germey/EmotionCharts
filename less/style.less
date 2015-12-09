@@ -1,8 +1,68 @@
 body {
     background-color: #16a085;
 }
-#chart2-content {
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.show-none {
+    display: none;
+}
+
+.video-js {
+    padding-bottom: 20px;
+}
+
+#chart2 {
+    background-color: #FFF;
+    .borderRadius(10px);
+    #chart2-content {
+        width: 100%;
+        height: 400px;
+        padding-top: 10px;
+    }
+}
+
+#options {
+    background-color: #FFF;
+    .borderRadius(10px);
+    .form-group {
+        overflow: hidden;
+        padding: 5px 10px;
+        .radio {
+            float: left;
+            margin: 10px;
+        }
+    }
+}
+#text {
+    background-color: #FFF;
     width: 100%;
     height: 400px;
-    background-color: #002a80;
+    padding: 30px;
+    .borderRadius(10px);
+    overflow-y: auto;
+    .item {
+        font-size: 14px;
+        border-bottom: 1px dashed #EEE;
+        padding-bottom: 5px;
+        cursor: pointer;
+        padding: 10px;
+        .borderRadius(10px);
+        &:hover {
+            background-color: #F0F0F0;
+        }
+    }
+    .active {
+        background-color: #F0F0F0;
+    }
+}
+
+
+.borderRadius(@radius: 10px) {
+    border-radius: @radius;
+    -wibkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -o-border-radius: @radius;
 }
