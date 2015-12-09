@@ -65,3 +65,34 @@ body {
 #text .active {
   background-color: #F0F0F0;
 }
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  padding-right: 10px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 20px;
+  margin-bottom: 2px;
+}
+::-webkit-scrollbar-track {
+  height: 20px;
+}
+::-webkit-scrollbar-track-piece {
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 20px;
+  top: 100px;
+  border-radius: 2px;
+  background: rgba(200, 200, 200, 0.6);
+  opacity: 0.4;
+  border-radius: 20px;
+  -wibkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+  height: 20px;
+  background: rgba(200, 200, 200, 0.2);
+}
