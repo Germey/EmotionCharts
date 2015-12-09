@@ -85,4 +85,8 @@ $(function () {
         });
         $('#options .radio input').first().trigger('click');
     });
+    $('.navbar-nav li a').on('click', function() {
+        $(document.body).animate({scrollTop:$($(this).attr('href')).offset().top}, 1000);
+    });
+
 });
