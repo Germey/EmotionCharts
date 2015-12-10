@@ -11,12 +11,14 @@ function addRadioButton(key) {
     }).prependTo(label);
     label.appendTo('#options .form-group');
 }
+
 function getChartType(kind) {
     var chart_type = {
         "直方图": 'column',
     }
     return chart_type[kind];
 }
+
 function getChart1(category, data) {
     return {
         chart: {
@@ -142,7 +144,7 @@ $(function() {
                                     times.push((item[0] - first_time) / 60 + '分钟');
                                     p_values.push(parseFloat(item[2]));
                                 }
-                                chart1_datas.push({'name': content.name, 'data': p_values, 'zones': zones});
+                                chart1_datas.push({'name': content.name, 'data': p_values, 'zones': zones[index]});
                                 if (index == value.length - 1) {
                                     chart1_data = getChart1(times, chart1_datas);
                                     console.log(chart1_data);
