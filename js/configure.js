@@ -28,52 +28,25 @@ var chart1_json = {
 
 zones = [{
     value: 0,
-    color: '#306157',
+    color: '#071E1A',
 }, {
     value: 0.005,
-    color: '#356C61',
+    color: '#1B5147',
 }, {
     value: 0.01,
-    color: '#387B6D',
+    color: '#33766A',
 }, {
     value: 0.02,
-    color: '#3B8B7A',
+    color: '#4B9689',
 }, {
     value: 0.03,
-    color: '#3D9A86',
+    color: '#73BCAF',
 }, {
     value: 0.04,
-    color: '#3FA58F',
+    color: '#9BD7CD',
 }, {
     value: 0.05,
-    color: '#40B299',
+    color: '#B2F0E4',
 }, {
-    value: 0.06,
-    color: '#41CCAE',
-}, {
-    value: 0.08,
-    color: '#3CD9B7',
-}, {
-    value: 0.10,
-    color: '#34E8C1',
-}, {
-    value: 0.15,
-    color: '#4BF0CC',
-}, {
-    value: 0.20,
-    color: '#65F6D7',
-}, {
-    value: 0.25,
-    color: '#7FFBE1',
-}, {
-    value: 0.30,
-    color: '#96F8E3',
-}, {
-    value: 0.35,
-    color: '#B0FBEB',
-}, {
-    value: 0.40,
-    color: '#CAFDF2',
-}, {
-    color: '#FCFCFC',
+    color: '#FFF',
 }];

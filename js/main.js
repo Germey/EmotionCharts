@@ -27,6 +27,7 @@ function getChart1(category, data) {
             categories: category
         },
         yAxis: {
+            max: 0.05,
             title: {
                 text: 'P_VALUE'
             },
@@ -35,6 +36,9 @@ function getChart1(category, data) {
                 width: 1,
                 color: '#808080'
             }]
+        },
+        plotOptions: {
+
         },
         legend: {
             layout: 'vertical',
