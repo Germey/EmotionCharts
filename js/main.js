@@ -1,6 +1,5 @@
-
 function addRadioButton(key) {
-    var label = $('<label></label>').addClass('radio').html('<div class="val">'+ key + '</div>');
+    var label = $('<label></label>').addClass('radio').html('<div class="val">' + key + '</div>');
     $('<span class="icons"><span class="icon-unchecked">' +
         '</span><span class="icon-checked"></span></span>').prependTo(label);
     $('<input>').attr({
@@ -12,14 +11,12 @@ function addRadioButton(key) {
     }).prependTo(label);
     label.appendTo('#options .form-group');
 }
-
 function getChartType(kind) {
     var chart_type = {
-        "直方图" : 'column',
+        "直方图": 'column',
     }
     return chart_type[kind];
 }
-
 function getChart1(category, data) {
     return {
         title: {
@@ -54,7 +51,6 @@ function getChart1(category, data) {
         },
     }
 }
-
 function getChart2(type, title, category, data) {
     return {
         chart: {
@@ -89,28 +85,74 @@ function getChart2(type, title, category, data) {
         },
     }
 }
-
-
 var chart1_json = {
     '男性-女性': [{
-        'path' : 'female.csv',
+        'path': 'female.csv',
         'name': '女性',
     }, {
-        'path' : 'male.csv',
+        'path': 'male.csv',
         'name': '男性',
     }],
     '成人-儿童': [{
-        'path' : 'female.csv',
+        'path': 'female.csv',
         'name': '成人',
     }, {
-        'path' : 'male.csv',
+        'path': 'male.csv',
         'name': '儿童',
     }]
 };
-
-
-
-$(function () {
+zones = [{
+    value: 0,
+    color: '#306157',
+}, {
+    value: 0.005,
+    color: '#356C61',
+}, {
+    value: 0.01,
+    color: '#387B6D',
+}, {
+    value: 0.02,
+    color: '#3B8B7A',
+}, {
+    value: 0.03,
+    color: '#3D9A86',
+}, {
+    value: 0.04,
+    color: '#3FA58F',
+}, {
+    value: 0.05,
+    color: '#40B299',
+}, {
+    value: 0.06,
+    color: '#41CCAE',
+}, {
+    value: 0.08,
+    color: '#3CD9B7',
+}, {
+    value: 0.10,
+    color: '#34E8C1',
+}, {
+    value: 0.15,
+    color: '#4BF0CC',
+}, {
+    value: 0.20,
+    color: '#65F6D7',
+}, {
+    value: 0.25,
+    color: '#7FFBE1',
+}, {
+    value: 0.30,
+    color: '#96F8E3',
+}, {
+    value: 0.35,
+    color: '#B0FBEB',
+}, {
+    value: 0.40,
+    color: '#CAFDF2',
+}, {
+    color: '#FCFCFC',
+}];
+$(function() {
     $.getJSON('json/format.json', function(data) {
         $.each(data, function(key, value) {
             addRadioButton(key);
@@ -153,12 +195,12 @@ $(function () {
                                 times = new Array();
                                 console.log(first_time);
                                 var p_values = new Array();
-                                for(var i = 1, l = data.length-1; i < l; i++) {
+                                for (var i = 1, l = data.length - 1; i < l; i++) {
                                     var item = data[i];
-                                    times.push((item[0] - first_time)/60 + '分钟');
+                                    times.push((item[0] - first_time) / 60 + '分钟');
                                     p_values.push(parseFloat(item[2]));
                                 }
-                                chart1_datas.push({'name': content.name, 'data': p_values});
+                                chart1_datas.push({'name': content.name, 'data': p_values, 'zones': zones});
                                 if (index == value.length - 1) {
                                     chart1_data = getChart1(times, chart1_datas);
                                     console.log(chart1_data);
@@ -168,26 +210,13 @@ $(function () {
                                 }
                             }
                         });
-
                     });
                 }
-
             });
         });
         $('#options .radio input').first().trigger('click');
     });
     $('.navbar-nav li a').on('click', function() {
-        $(document.body).animate({scrollTop:$($(this).attr('href')).offset().top}, 1000);
+        $(document.body).animate({scrollTop: $($(this).attr('href')).offset().top}, 1000);
     });
-
-
-    /*
-    csvData = getOneCsvData('csv/female.csv', '女');
-    console.log(csvData);
-    */
-
-});
-
-$(function () {
-
 });
