@@ -19,6 +19,10 @@ function getChartType(kind) {
 }
 function getChart1(category, data) {
     return {
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
+        },
         title: {
             text: "P_VALUE变化一览表",
             x: -20
