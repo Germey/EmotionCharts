@@ -85,73 +85,7 @@ function getChart2(type, title, category, data) {
         },
     }
 }
-var chart1_json = {
-    '男性-女性': [{
-        'path': 'female.csv',
-        'name': '女性',
-    }, {
-        'path': 'male.csv',
-        'name': '男性',
-    }],
-    '成人-儿童': [{
-        'path': 'female.csv',
-        'name': '成人',
-    }, {
-        'path': 'male.csv',
-        'name': '儿童',
-    }]
-};
-zones = [{
-    value: 0,
-    color: '#306157',
-}, {
-    value: 0.005,
-    color: '#356C61',
-}, {
-    value: 0.01,
-    color: '#387B6D',
-}, {
-    value: 0.02,
-    color: '#3B8B7A',
-}, {
-    value: 0.03,
-    color: '#3D9A86',
-}, {
-    value: 0.04,
-    color: '#3FA58F',
-}, {
-    value: 0.05,
-    color: '#40B299',
-}, {
-    value: 0.06,
-    color: '#41CCAE',
-}, {
-    value: 0.08,
-    color: '#3CD9B7',
-}, {
-    value: 0.10,
-    color: '#34E8C1',
-}, {
-    value: 0.15,
-    color: '#4BF0CC',
-}, {
-    value: 0.20,
-    color: '#65F6D7',
-}, {
-    value: 0.25,
-    color: '#7FFBE1',
-}, {
-    value: 0.30,
-    color: '#96F8E3',
-}, {
-    value: 0.35,
-    color: '#B0FBEB',
-}, {
-    value: 0.40,
-    color: '#CAFDF2',
-}, {
-    color: '#FCFCFC',
-}];
+
 $(function() {
     $.getJSON('json/format.json', function(data) {
         $.each(data, function(key, value) {
