@@ -13,46 +13,64 @@ function addRadioButton(key) {
 }
 
 
-function getChart1(category, data) {
+function getChart1(title, data) {
     return {
         chart: {
             type: 'scatter',
             zoomType: 'xy'
         },
         title: {
-            text: "P_VALUE变化一览表",
-            x: -20
+            text: title
         },
         xAxis: {
-            categories: category
+            title: {
+                enabled: true,
+                text: '时间'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
         },
         yAxis: {
-            max: 0.05,
             title: {
-                text: 'P_VALUE'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        plotOptions: {
-
+                text: '类别'
+            }
         },
         legend: {
             layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            backgroundColor: '#FFFFFF',
+            borderWidth: 1
         },
-        series: data,
-        exporting: {
-            enabled: false
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x} 分钟'
+                }
+            }
         },
-        credits: {
-            enabled: false
-        },
+        series: data
     }
 }
 function getChart2(type, title, category, data) {
@@ -171,26 +189,31 @@ $(function() {
             button_key = $(this).siblings('.val').text();
             $.each(chart1_json, function(key, value) {
                 chart1_datas = new Array();
-                times = new Array();
                 if (key == button_key) {
                     $.each(value, function(index, content) {
                         Papa.parse('csv/' + content.path, {
                             download: true,
                             complete: function(results) {
+                                var arr_01 = new Array();
+                                var arr_05 = new Array();
                                 var data = results.data;
                                 var first = data[1];
                                 var first_time = first[0];
                                 times = new Array();
                                 console.log(first_time);
-                                var p_values = new Array();
                                 for (var i = 1, l = data.length - 1; i < l; i++) {
                                     var item = data[i];
-                                    times.push((item[0] - first_time) / 60 + '分钟');
-                                    p_values.push(parseFloat(item[2]));
+                                    p_value = parseFloat(item[2]);
+                                    if (p_value < 0.01) {
+                                        arr_01.push([(item[0] - first_time) / 60, 0]);
+                                    } else if (p_value > 0.01 & p_value < 0.05) {
+                                        arr_05.push([(item[0] - first_time) / 60, 1]);
+                                    }
                                 }
-                                chart1_datas.push({'name': content.name, 'data': p_values, 'zones': zones[index]});
+                                chart1_datas.push({'name': content.name + '0.01', 'data': arr_01, color: 'rgba(' + colors[index][0] + ',' + colors[index][1]+ ',' + colors[index][2] + ', 1)'});
+                                chart1_datas.push({'name': content.name + '0.05', 'data': arr_05, color: 'rgba(' + colors[index][0] + ',' + colors[index][1]+ ',' + colors[index][2] + ', 0.5)'});
                                 if (index == value.length - 1) {
-                                    chart1_data = getChart1(times, chart1_datas);
+                                    chart1_data = getChart1(key, chart1_datas);
                                     console.log(chart1_data);
                                     $('#chart1-content').highcharts(chart1_data);
                                     delete chart1_data;
