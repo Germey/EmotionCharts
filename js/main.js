@@ -205,9 +205,9 @@ $(function() {
                                     var item = data[i];
                                     p_value = parseFloat(item[2]);
                                     if (p_value < 0.01) {
-                                        arr_01.push([(item[0] - first_time) / 60, 0]);
+                                        arr_01.push([(item[0] - first_time) / 60, 0, 2]);
                                     } else if (p_value > 0.01 & p_value < 0.05) {
-                                        arr_05.push([(item[0] - first_time) / 60, 1]);
+                                        arr_05.push([(item[0] - first_time) / 60, 1, 2]);
                                     }
                                 }
                                 chart1_datas.push({'name': content.name + '0.01', 'data': arr_01, color: 'rgba(' + colors[index][0] + ',' + colors[index][1]+ ',' + colors[index][2] + ', 1)'});
