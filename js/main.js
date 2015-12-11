@@ -11,8 +11,6 @@ function addRadioButton(key) {
     }).prependTo(label);
     label.appendTo('#options .form-group');
 }
-
-
 function getChart1(title, data) {
     return {
         chart: {
@@ -20,7 +18,7 @@ function getChart1(title, data) {
             zoomType: 'xy'
         },
         title: {
-            text: title
+            text: title + '感兴趣程度统计'
         },
         xAxis: {
             title: {
@@ -29,19 +27,24 @@ function getChart1(title, data) {
             },
             startOnTick: true,
             endOnTick: true,
-            showLastLabel: true
+            showLastLabel: true,
         },
         yAxis: {
             title: {
-                text: '类别'
+                text: '感兴趣度'
+            },
+            minRange: 1,
+            min: -0.25,
+            max: 1.25,
+            labels: {
+                enabled: false
             }
         },
         legend: {
             layout: 'vertical',
-            align: 'left',
+            align: 'right',
             verticalAlign: 'top',
-            x: 100,
-            y: 70,
+            y: 0,
             floating: true,
             backgroundColor: '#FFFFFF',
             borderWidth: 1
@@ -49,7 +52,7 @@ function getChart1(title, data) {
         plotOptions: {
             scatter: {
                 marker: {
-                    radius: 5,
+                    radius: 3,
                     states: {
                         hover: {
                             enabled: true,
@@ -145,9 +148,7 @@ function getChart2(type, title, category, data) {
             },
         }
     }
-
 }
-
 $(function() {
     $.getJSON('json/format.json', function(data) {
         $.each(data, function(key, value) {
@@ -162,7 +163,7 @@ $(function() {
                     $('#text').html('');
                     $.each(value, function(index, content) {
                         var text = $('<div></div>').text('TIP' + (index + 1) + '：' + content.tip).addClass('item show-none').attr('for', index);
-                        if (! content.table) {
+                        if (!content.table) {
                             text.addClass('unclick');
                         }
                         text.appendTo($('#text'));
@@ -210,8 +211,16 @@ $(function() {
                                         arr_05.push([(item[0] - first_time) / 60, 1, 2]);
                                     }
                                 }
-                                chart1_datas.push({'name': content.name + '0.01', 'data': arr_01, color: 'rgba(' + colors[index][0] + ',' + colors[index][1]+ ',' + colors[index][2] + ', 1)'});
-                                chart1_datas.push({'name': content.name + '0.05', 'data': arr_05, color: 'rgba(' + colors[index][0] + ',' + colors[index][1]+ ',' + colors[index][2] + ', 0.5)'});
+                                chart1_datas.push({
+                                    'name': content.name + '0.01',
+                                    'data': arr_01,
+                                    color: 'rgba(' + colors[index][0] + ',' + colors[index][1] + ',' + colors[index][2] + ', 1)'
+                                });
+                                chart1_datas.push({
+                                    'name': content.name + '0.05',
+                                    'data': arr_05,
+                                    color: 'rgba(' + colors[index][0] + ',' + colors[index][1] + ',' + colors[index][2] + ', 0.5)'
+                                });
                                 if (index == value.length - 1) {
                                     chart1_data = getChart1(key, chart1_datas);
                                     console.log(chart1_data);

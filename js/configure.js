@@ -11,12 +11,53 @@ var chart1_json = {
         'name': '男性',
     }],
     '成人-儿童': [{
-        'path': 'female.csv',
+        'path': 'adult.csv',
         'name': '成人',
     }, {
-        'path': 'male.csv',
+        'path': 'children.csv',
         'name': '儿童',
     }],
+    '专业-非专业': [{
+        'path': 'friend.csv',
+        'name': '专业',
+    }, {
+        'path': 'stranger.csv',
+        'name': '非专业',
+    }],
+    '男童-女童': [{
+        'path': 'male_child.csv',
+        'name': '男童',
+    }, {
+        'path': 'female_child.csv',
+        'name': '女童',
+    }],
+    '专业-非专业': [{
+        'path': 'friend.csv',
+        'name': '专业',
+    }, {
+        'path': 'stranger.csv',
+        'name': '非专业',
+    }],
+    '一年内观剧不同次数': [{
+        'path': '0frequency.csv',
+        'name': '0次',
+    }, {
+        'path': '1_3frequency.csv',
+        'name': '1-3次',
+    }, {
+        'path': '4_10frequency.csv',
+        'name': '4-10次',
+    }, {
+        'path': '11frequency.csv',
+        'name': '11次以上',
+    }],
+    '不同观剧氛围': [{
+        'path': 'theatre.csv',
+        'name': '独自观剧',
+    }, {
+        'path': 'no_theatre.csv',
+        'name': '跟他人观剧',
+    }]
 };
 /*
  * 颜色配置，例如如下配置则为 0-0.005 的 p_value 值显示 #306157, 0.005-0.01 的 p_value 值显示 #356C61,
@@ -70,8 +111,6 @@ zones = [[{
 }, {
     color: '#FFF',
 }]];
-
-
 colors = [
     [5, 116, 94],
     [214, 29, 46],
