@@ -88,6 +88,14 @@ body {
 #text .active {
   background-color: #F0F0F0;
 }
+#text .unclick {
+  background-color: #FFF;
+  cursor: inherit;
+}
+#text .unclick:hover {
+  background-color: #FFF;
+  cursor: inherit;
+}
 /* 滚动条 */
 ::-webkit-scrollbar {
   width: 10px;

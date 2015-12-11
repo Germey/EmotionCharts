@@ -12,12 +12,6 @@ function addRadioButton(key) {
     label.appendTo('#options .form-group');
 }
 
-function getChartType(kind) {
-    var chart_type = {
-        "直方图": 'column',
-    }
-    return chart_type[kind];
-}
 
 function getChart1(category, data) {
     return {
@@ -62,43 +56,84 @@ function getChart1(category, data) {
     }
 }
 function getChart2(type, title, category, data) {
-    return {
-        chart: {
-            type: getChartType(type)
-        },
-        title: {
-            text: title,
-        },
-        xAxis: {
-            categories: category
-        },
-        yAxis: {
-            min: 0,
+    if (type == '直方图') {
+        return {
+            chart: {
+                type: 'column',
+            },
             title: {
-                text: '人数'
-            }
-        },
-        series: [{
-            name: '人数',
-            data: data,
-        }],
-        exporting: {
-            enabled: false
-        },
-        plotOptions: {
-            series: {
-                color: '#16a085'
-            }
-        },
-        credits: {
-            enabled: false
-        },
+                text: title,
+            },
+            xAxis: {
+                categories: category
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '人数'
+                }
+            },
+            series: [{
+                name: '人数',
+                data: data,
+            }],
+            exporting: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    color: '#16a085'
+                }
+            },
+            credits: {
+                enabled: false
+            },
+        }
+    } else if (type == '饼图') {
+        return {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: title
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: title,
+                data: data
+            }],
+            credits: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+        }
     }
+
 }
 
 $(function() {
     $.getJSON('json/format.json', function(data) {
         $.each(data, function(key, value) {
+            console.log(key);
             addRadioButton(key);
         });
         $('#options .radio input').on('click', function() {
@@ -108,8 +143,17 @@ $(function() {
                     chart2_datas = new Array();
                     $('#text').html('');
                     $.each(value, function(index, content) {
-                        $('<div></div>').text('TIP' + (index + 1) + '：' + content.tip).addClass('item show-none').attr('for', index).appendTo($('#text'));
-                        chart2_data = getChart2(content.table.type, content.table.title, content.table.category, content.table.data);
+                        var text = $('<div></div>').text('TIP' + (index + 1) + '：' + content.tip).addClass('item show-none').attr('for', index);
+                        if (! content.table) {
+                            text.addClass('unclick');
+                        }
+                        text.appendTo($('#text'));
+                        var chart2_data;
+                        if (content.table) {
+                            chart2_data = getChart2(content.table.type, content.table.title, content.table.category, content.table.data);
+                        } else {
+                            chart2_data = "";
+                        }
                         chart2_datas.push(chart2_data);
                         $('#chart2-content').highcharts(chart2_data);
                     });
