@@ -222,11 +222,13 @@ $(function() {
                                     color: 'rgba(' + colors[index][0] + ',' + colors[index][1] + ',' + colors[index][2] + ', 0.5)'
                                 });
                                 if (index == value.length - 1) {
-                                    chart1_data = getChart1(key, chart1_datas);
-                                    console.log(chart1_data);
-                                    $('#chart1-content').highcharts(chart1_data);
-                                    delete chart1_data;
-                                    delete chart1_datas;
+                                    setTimeout(function() {
+                                        chart1_data = getChart1(key, chart1_datas);
+                                        console.log(chart1_data);
+                                        $('#chart1-content').highcharts(chart1_data);
+                                        delete chart1_data;
+                                        delete chart1_datas;
+                                    }, 300);
                                 }
                             }
                         });
@@ -234,7 +236,9 @@ $(function() {
                 }
             });
         });
-        $('#options .radio input').first().trigger('click');
+        setTimeout(function() {
+            $('#options .radio input').first().trigger('click');
+        }, 300);
     });
     $('.navbar-nav li a').on('click', function() {
         $(document.body).animate({scrollTop: $($(this).attr('href')).offset().top}, 1000);
