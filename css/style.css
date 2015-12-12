@@ -58,7 +58,7 @@ body {
 }
 #options .form-group .radio {
   float: left;
-  margin: 10px;
+  margin: 10px 6px;
 }
 #text {
   background-color: #FFF;

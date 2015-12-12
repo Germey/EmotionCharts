@@ -4,39 +4,32 @@
  * */
 var chart1_json = {
     '男性-女性': [{
-        'path': 'female.csv',
+        'path': 'females.csv',
         'name': '女性',
     }, {
-        'path': 'male.csv',
+        'path': 'males.csv',
         'name': '男性',
     }],
     '成人-儿童': [{
-        'path': 'adult.csv',
+        'path': 'adults.csv',
         'name': '成人',
     }, {
         'path': 'children.csv',
         'name': '儿童',
     }],
     '专业-非专业': [{
-        'path': 'friend.csv',
+        'path': 'friends.csv',
         'name': '专业',
     }, {
-        'path': 'stranger.csv',
+        'path': 'strangers.csv',
         'name': '非专业',
     }],
     '男童-女童': [{
-        'path': 'male_child.csv',
+        'path': 'boys.csv',
         'name': '男童',
     }, {
-        'path': 'female_child.csv',
+        'path': 'girls.csv',
         'name': '女童',
-    }],
-    '专业-非专业': [{
-        'path': 'friend.csv',
-        'name': '专业',
-    }, {
-        'path': 'stranger.csv',
-        'name': '非专业',
     }],
     '一年内观剧不同次数': [{
         'path': '0frequency.csv',
@@ -55,8 +48,16 @@ var chart1_json = {
         'path': 'theatre.csv',
         'name': '独自观剧',
     }, {
-        'path': 'no_theatre.csv',
+        'path': 'non_theatre.csv',
         'name': '跟他人观剧',
+    }],
+    '争夺头马': [{
+        'path': 'all.csv',
+        'name': '全场',
+    }],
+    '马偶戏': [{
+        'path': 'all.csv',
+        'name': '全场',
     }]
 };
 /*

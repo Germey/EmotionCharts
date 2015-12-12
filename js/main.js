@@ -23,19 +23,22 @@ function getChart1(title, data) {
         xAxis: {
             title: {
                 enabled: true,
-                text: '时间'
+                text: '时间(分钟)'
             },
+            min: 0,
+            maxRange: 1,
             startOnTick: true,
             endOnTick: true,
             showLastLabel: true,
+            tickInterval: 5
         },
         yAxis: {
             title: {
-                text: '感兴趣度'
+                text: '类别'
             },
-            minRange: 1,
-            min: -0.25,
-            max: 1.25,
+            //minRange: 1,
+            min: -0.5,
+            //max: 1.25,
             labels: {
                 enabled: false
             }
@@ -71,7 +74,7 @@ function getChart1(title, data) {
                     headerFormat: '<b>{series.name}</b><br>',
                     pointFormat: '{point.x} 分钟'
                 }
-            }
+            },
         },
         series: data
     }
@@ -206,9 +209,9 @@ $(function() {
                                     var item = data[i];
                                     p_value = parseFloat(item[2]);
                                     if (p_value < 0.01) {
-                                        arr_01.push([(item[0] - first_time) / 60, 0, 2]);
+                                        arr_01.push([(item[0] - first_time) / 60, index, 2]);
                                     } else if (p_value > 0.01 & p_value < 0.05) {
-                                        arr_05.push([(item[0] - first_time) / 60, 1, 2]);
+                                        arr_05.push([(item[0] - first_time) / 60, index, 2]);
                                     }
                                 }
                                 chart1_datas.push({
