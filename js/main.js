@@ -236,7 +236,7 @@ $(function() {
                                         $('#chart1-content').highcharts(chart1_data);
                                         delete chart1_data;
                                         delete chart1_datas;
-                                    }, 400);
+                                    }, 300);
                                 }
                             }
                         });
@@ -246,7 +246,7 @@ $(function() {
         });
         setTimeout(function() {
             $('#options .radio input').first().trigger('click');
-        }, 400);
+        }, 300);
     });
     $('.navbar-nav li a').on('click', function() {
         $(document.body).animate({scrollTop: $($(this).attr('href')).offset().top}, 1000);
