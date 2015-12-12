@@ -12,6 +12,11 @@ function addRadioButton(key) {
     label.appendTo('#options .form-group');
 }
 function getChart1(title, data) {
+    var minY;
+    if (title == '争夺头马' || title == '马偶戏')
+        minY = 0;
+    else
+        minY = -0.5;
     return {
         chart: {
             type: 'scatter',
@@ -37,7 +42,7 @@ function getChart1(title, data) {
                 text: '类别'
             },
             //minRange: 1,
-            min: -0.5,
+            min: minY,
             //max: 1.25,
             labels: {
                 enabled: false
