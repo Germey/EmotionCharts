@@ -163,7 +163,6 @@ function getChart2(type, title, category, data) {
 $(function() {
     $.getJSON('json/format.json', function(data) {
         $.each(data, function(key, value) {
-            console.log(key);
             addRadioButton(key);
         });
         $('#options .radio input').on('click', function() {
@@ -219,7 +218,6 @@ $(function() {
                                 var first = data[1];
                                 var first_time = first[0];
                                 times = new Array();
-                                console.log(first_time);
                                 for (var i = 1, l = data.length - 1; i < l; i++) {
                                     var item = data[i];
                                     p_value = parseFloat(item[2]);
@@ -242,7 +240,6 @@ $(function() {
                                 if (index == value.length - 1) {
                                     setTimeout(function() {
                                         chart1_data = getChart1(key, chart1_datas);
-                                        console.log(chart1_data);
                                         $('#chart1-content').highcharts(chart1_data);
                                         delete chart1_data;
                                         delete chart1_datas;
