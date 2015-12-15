@@ -99,10 +99,27 @@ body {
 #volunteer table {
   background-color: #FFF;
   font-size: 13px;
+  border: none;
   border-radius: 10px;
   -wibkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
+}
+#volunteer table th:first-child {
+  border-left: none;
+}
+#volunteer table th:last-child {
+  border-right: none;
+}
+#volunteer table td:first-child {
+  border-left: none;
+}
+#volunteer table td:last-child {
+  border-right: none;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 0;
 }
 /* 滚动条 */
 ::-webkit-scrollbar {

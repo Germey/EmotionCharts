@@ -53,5 +53,8 @@ $(function() {
                 }
             });
         });
+        setTimeout(function() {
+            $('#options .radio input').first().trigger('click');
+        }, 300);
     });
 });
