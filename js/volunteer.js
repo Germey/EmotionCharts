@@ -16,36 +16,42 @@ function addRadioButton(key) {
 }
 $(function() {
     $.getJSON('json/volunteer.json', function(data) {
-        console.log(data);
         $.each(data, function(key, value) {
-            console.log(key);
             addRadioButton(key);
         });
-    });
-    Papa.parse('csv/volunteer_70.csv', {
-        download: true,
-        encoding: "utf-8",
-        complete: function(results) {
-            var data = results.data;
-            for (var i = 1, l = data.length - 1; i < l; i++) {
-                var item = data[i];
-                $('<tr>'
-                + '<td>' + item[2] + '</td>'
-                + '<td>' + item[3] + '</td>'
-                + '<td>' + item[4] + '</td>'
-                + '<td>' + item[5] + '</td>'
-                + '<td>' + item[6] + '</td>'
-                + '<td>' + item[7] + '</td>'
-                + '<td>' + item[8] + '</td>'
-                + '<td>' + item[9] + '</td>'
-                + '<td>' + item[10] + '</td>'
-                + '<td>' + item[11] + '</td>'
-                + '<td>' + item[12] + '</td>'
-                + '<td>' + item[13] + '</td>'
-                + '<td>' + item[14] + '</td>'
-                + '</tr>'
-                ).appendTo($('#volunteer table'));
-            }
-        }
+        $('#options .radio input').on('click', function() {
+            button_key = $(this).siblings('.val').text();
+            $.each(data, function(key, value) {
+                if (key == button_key) {
+                    Papa.parse('csv/volunteer_' + value, {
+                        download: true,
+                        encoding: "utf-8",
+                        complete: function(results) {
+                            var data = results.data;
+                            $('#volunteer table tbody').html('');
+                            for (var i = 1, l = data.length - 1; i < l; i++) {
+                                var item = data[i];
+                                $('<tr>'
+                                    + '<td>' + item[2] + '</td>'
+                                    + '<td>' + item[3] + '</td>'
+                                    + '<td>' + item[4] + '</td>'
+                                    + '<td>' + item[5] + '</td>'
+                                    + '<td>' + item[6] + '</td>'
+                                    + '<td>' + item[7] + '</td>'
+                                    + '<td>' + item[8] + '</td>'
+                                    + '<td>' + item[9] + '</td>'
+                                    + '<td>' + item[10] + '</td>'
+                                    + '<td>' + item[11] + '</td>'
+                                    + '<td>' + item[12] + '</td>'
+                                    + '<td>' + item[13] + '</td>'
+                                    + '<td>' + item[14] + '</td>'
+                                    + '</tr>'
+                                ).appendTo($('#volunteer table'));
+                            }
+                        }
+                    });
+                }
+            });
+        });
     });
 });
