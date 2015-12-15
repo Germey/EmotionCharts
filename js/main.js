@@ -81,7 +81,10 @@ function getChart1(title, data) {
                 }
             },
         },
-        series: data
+        series: data,
+        credits: {
+            enabled: false
+        },
     }
 }
 function getChart2(type, title, category, data) {
@@ -107,7 +110,7 @@ function getChart2(type, title, category, data) {
                 data: data,
             }],
             exporting: {
-                enabled: false
+                //enabled: false
             },
             plotOptions: {
                 series: {
@@ -152,7 +155,7 @@ function getChart2(type, title, category, data) {
                 enabled: false
             },
             exporting: {
-                enabled: false
+                //enabled: false
             },
         }
     }
@@ -183,6 +186,13 @@ $(function() {
                         }
                         chart2_datas.push(chart2_data);
                         $('#chart2-content').highcharts(chart2_data);
+                    });
+                    $.each($('#text .item'), function() {
+                        $(this).editable({
+                            type: 'textarea',
+                            tooltip: '点击编辑',
+                            indicator : '正在保存',
+                        });
                     });
                     $('#text .item').on('click', function() {
                         $('#text .item').removeClass('active');
