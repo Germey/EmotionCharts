@@ -98,7 +98,11 @@ body {
 }
 #volunteer table {
   background-color: #FFF;
-  font-size: 14px;
+  font-size: 13px;
+  border-radius: 10px;
+  -wibkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 /* 滚动条 */
 ::-webkit-scrollbar {
