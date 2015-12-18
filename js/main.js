@@ -116,7 +116,11 @@ function getChart2(type, title, category, data) {
                 series: {
                     color: '#16a085',
                     showInLegend: false
-                },
+                }
+            },
+            tooltip: {
+                headerFormat: '<span>{point.key}:</span>',
+                pointFormat: '{point.y}'
             },
             credits: {
                 enabled: false
