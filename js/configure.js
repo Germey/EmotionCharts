@@ -49,7 +49,7 @@ var chart1_json = {
         'name': '独自观剧',
     }, {
         'path': 'non_theatre.csv',
-        'name': '跟他人观剧',
+        'name': '跟朋友观剧',
     }],
     '争夺头马': [{
         'path': 'all.csv',
