@@ -23,7 +23,7 @@ function getChart1(title, data) {
             zoomType: 'xy'
         },
         title: {
-            text: title + '感兴趣程度统计'
+            text: title + '观众关注度上升程度对比图'
         },
         xAxis: {
             title: {
@@ -102,7 +102,7 @@ function getChart2(type, title, category, data) {
             yAxis: {
                 min: 0,
                 title: {
-                    text: '人数'
+                    text: ''
                 }
             },
             series: [{
@@ -114,8 +114,9 @@ function getChart2(type, title, category, data) {
             },
             plotOptions: {
                 series: {
-                    color: '#16a085'
-                }
+                    color: '#16a085',
+                    showInLegend: false
+                },
             },
             credits: {
                 enabled: false
@@ -143,7 +144,8 @@ function getChart2(type, title, category, data) {
                         color: '#000000',
                         connectorColor: '#000000',
                         format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
+                    },
+                    showInLegend: false
                 }
             },
             series: [{
@@ -228,12 +230,12 @@ $(function() {
                                     }
                                 }
                                 chart1_datas.push({
-                                    'name': content.name + '0.01',
+                                    'name': content.name + '极显著',
                                     'data': arr_01,
                                     color: 'rgba(' + colors[index][0] + ',' + colors[index][1] + ',' + colors[index][2] + ', 1)'
                                 });
                                 chart1_datas.push({
-                                    'name': content.name + '0.05',
+                                    'name': content.name + '较显著',
                                     'data': arr_05,
                                     color: 'rgba(' + colors[index][0] + ',' + colors[index][1] + ',' + colors[index][2] + ', 0.5)'
                                 });
