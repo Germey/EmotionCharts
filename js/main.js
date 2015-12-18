@@ -110,7 +110,7 @@ function getChart2(type, title, category, data) {
                 data: data,
             }],
             exporting: {
-                //enabled: false
+                enabled: false
             },
             plotOptions: {
                 series: {
