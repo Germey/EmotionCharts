@@ -161,7 +161,7 @@ function getChart2(type, title, category, data) {
                 enabled: false
             },
             exporting: {
-                //enabled: false
+                enabled: false
             },
         }
     }
